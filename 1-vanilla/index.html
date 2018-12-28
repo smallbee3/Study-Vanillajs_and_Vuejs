@@ -18,6 +18,12 @@
         <input type="text" placeholder="검색어를 입력하세요" autofocus>
         <button type="reset" class="btn-reset"></button>
       </form>
+      <!-- FormView와는 달리 검색결과는 데이터가 미리 정해져있지 않음  -->
+      <!-- 검색 데이터를 서버로 요청을 하고 받은 데이터를 동적으로 DOM을 만들어내야되요. -->
+      <!-- 그렇기 때문에 이 부분은 검색결과를 위한 resultView가 mounting될 수 있는 element만 만들도록 하겠습니다. -->
+      <div class="content">
+        <div id="search-result"></div>
+      </div>
     </div>
   </div>
   <script type="module" src="./js/app.js"></script>
