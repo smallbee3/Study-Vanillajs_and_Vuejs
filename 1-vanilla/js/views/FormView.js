@@ -26,7 +26,7 @@ FormView.bindEvents = function () {
 FormView.onKeyup = function (e) {
   const enter = 13
   this.showResetBtn(this.inputEL.value.length)  // 입력한 문자열이 있을 경우에만 버튼이 나타남
-  if (!this.inputEL.value.length) this.emit('@reset')
+  if (!this.inputEL.value.length) return this.emit('@reset')
   if (e.keyCode !== enter) return
   this.emit('@submit', {input: this.inputEL.value}) // View 모듈에 있는 emit이라는 메서드 이용, 우리가 정의할 @submit이라는 메서드, paramter로는 방금 입력한 값
 } // @submit -> 커스텀인 것을 표시하기 위해서 '@'을 붙임 (문자열이라서 상관 없음)
