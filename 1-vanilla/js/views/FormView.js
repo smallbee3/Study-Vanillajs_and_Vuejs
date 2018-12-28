@@ -9,10 +9,19 @@ FormView.setup = function (el) {  // HTML element를 주입 받아서 내부적�
   this.inputEL = el.querySelector('[type=text]')
   this.resetEL = el.querySelector('[type=reset]')
   this.showResetBtn(false)
+  this.bindEvents()
 }
 
 FormView.showResetBtn = function(show = true) {
   this.resetEL.style.display = show ? 'block' : 'none'
+}
+
+FormView.bindEvents = function() {
+  this.inputEL.addEventListener('keyup', e => this.onKeyup(e)) // inputEL가 HTML element이기 때문에 addEventListener 함수를 쓸 수 있음
+}
+
+FormView.onKeyup = function() {
+  this.showResetBtn(this.inputEL.value.length)  // 입력한 문자열이 있을 경우에만 버튼이 나타남
 }
 
 export default FormView
