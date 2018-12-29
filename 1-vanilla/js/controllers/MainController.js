@@ -19,6 +19,7 @@ export default {
       .on('@change', e => this.onChangeTab(e.detail.tabName))
 
     KeywordView.setup(document.querySelector('#search-keyword'))
+      .on('@click', e => this.onClickKeyword(e.detail.keyword))
 
     ResultView.setup(document.querySelector('#search-result'))
 
@@ -67,16 +68,23 @@ export default {
     // 1) no value
     // this.onSearchresult([])
     // 2) data from SearchModel.js (dummy data)
+
     SearchModel.list(query).then(data => {
-      this.onSearchresult(data)
+      this.onSearchResult(data)
     })
   },
 
-  onSearchresult(data) {
+  onSearchResult(data) {
+    TabView.hide()
+    KeywordView.hide()
     ResultView.render(data)
   },
 
   onChangeTab(tabName) {
     debugger
+  },
+
+  onClickKeyword(keyword) {
+    this.search(keyword)
   }
 }
