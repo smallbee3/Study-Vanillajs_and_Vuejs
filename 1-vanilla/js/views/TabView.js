@@ -7,20 +7,18 @@ const TabView = Object.create(View)
 TabView.setup = function (el) {
   this.init(el)
   // this.setActiveTab('추천 검색어') // My way instead of codes in MainController.js
-  this.lis = el.querySelectorAll('li')
   this.bindClick()
   return this
 }
 
 TabView.setActiveTab = function (tabName) {
-  console.log('hi')
   Array.from(this.el.querySelectorAll('li')).forEach(li => {
       li.className = li.innerHTML === tabName ? 'active' : ''
   })
 }
 
 TabView.bindClick = function () {
-  this.lis.forEach(li => {
+  Array.from(this.el.children).forEach(li => {
     // li.addEventListener('click', e => this.setActiveTab(li.innerHTML)) // My way - Didn't care about sedning event to Controller.js
     li.addEventListener('click', e => this.onClick(li.innerHTML))
   })
