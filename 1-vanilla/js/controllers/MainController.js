@@ -18,12 +18,14 @@ export default {
   onSubmit(input) {
     console.log(tag, 'onSubmit()', input)
     this.search(input)
+    ResultView.show()
   },
 
   onResetForm() {
     console.log(tag, 'onResetForm()')
 
-    ResultView.renderReset() // ResultView 3 - make 'renderReset' method in ResultView.js, which needs many code
+    // ResultView.renderReset() // ResultView 3 - make 'renderReset' method in ResultView.js, which needs many code
+    ResultView.hide()
   },
 
   search(query) {

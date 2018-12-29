@@ -14,10 +14,10 @@ ResultView.render = function (data = []) {
 }
 
 // ResultView 3 - My answer (called in MainController.js)
-ResultView.renderReset = function () {
-  console.log(tag, 'renderReset()')
-  this.el.innerHTML = ''
-}
+// ResultView.renderReset = function () {
+//   console.log(tag, 'renderReset()')
+//   this.el.innerHTML = ''
+// }
 
 ResultView.getSearchResultHtml = function (data) {
     // debugger
