@@ -22,6 +22,8 @@ export default {
 
   onResetForm() {
     console.log(tag, 'onResetForm()')
+
+    ResultView.renderReset() // ResultView 3 - make 'renderReset' method in ResultView.js, which needs many code
   },
 
   search(query) {

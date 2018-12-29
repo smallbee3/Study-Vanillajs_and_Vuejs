@@ -13,6 +13,12 @@ ResultView.render = function (data = []) {
   this.el.innerHTML = data.length ? this.getSearchResultHtml(data) : '검색 결과가 없습니다'
 }
 
+// ResultView 3 - My answer (called in MainController.js)
+ResultView.renderReset = function () {
+  console.log(tag, 'renderReset()')
+  this.el.innerHTML = ''
+}
+
 ResultView.getSearchResultHtml = function (data) {
     // debugger
     return data.reduce((html, item) => {
