@@ -59,7 +59,8 @@ export default {
     console.log(tag, 'onResetForm()')
 
     // ResultView.renderReset() // ResultView 3 - make 'renderReset' method in ResultView.js, which needs many code
-    ResultView.hide()
+    // ResultView.hide()
+    this.renderView()
   },
 
   search(query) {

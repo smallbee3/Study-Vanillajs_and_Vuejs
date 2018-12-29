@@ -38,6 +38,8 @@ FormView.onClickReset = function (e) {
 
 FormView.setValue = function (value = '') {
   this.inputEl.value = value
+  // this.showResetBtn(true)
+  this.showResetBtn(this.inputEl.value.length) // 좀 더 확실하게(안전하게) 하기 위해서 true 대신 length값을 전달
 }
 
 export default FormView
