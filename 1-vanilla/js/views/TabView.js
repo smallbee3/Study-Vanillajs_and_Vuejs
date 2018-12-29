@@ -4,6 +4,11 @@ const tag = '[TabView]'
 
 const TabView = Object.create(View)
 
+TabView.tabNames = {
+  recommend: '추천 검색어',
+  recent: '최근 검색어'
+}
+
 TabView.setup = function (el) {
   this.init(el)
   // this.setActiveTab('추천 검색어') // My way instead of codes in MainController.js

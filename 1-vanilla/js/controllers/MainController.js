@@ -37,7 +37,7 @@ export default {
       // View를 rendering하는 곳이기 때문에 KeywordModel.js에서 data를 가져오는 코드를 아래 fetchSearchKeyword()로 분리
       this.fetchSearchKeyword()
     } else {
-
+      debugger
     }
     ResultView.hide()
   },
