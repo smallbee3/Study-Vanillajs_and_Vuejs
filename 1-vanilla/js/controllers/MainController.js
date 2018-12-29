@@ -86,5 +86,8 @@ export default {
 
   onClickKeyword(keyword) {
     this.search(keyword)
+
+    // FormView.inputEl.value = keyword
+    FormView.setValue(keyword)
   }
 }
