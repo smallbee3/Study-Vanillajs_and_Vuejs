@@ -14,6 +14,7 @@ export default {
       .on('@reset', e => this.onResetForm())
 
     TabView.setup(document.querySelector('#tabs'))
+      .on('@change', e => this.onChangeTab(e.detail.tabName))
 
     ResultView.setup(document.querySelector('#search-result'))
 
@@ -53,5 +54,9 @@ export default {
 
   onSearchresult(data) {
     ResultView.render(data)
+  },
+
+  onChangeTab(tabName) {
+    debugger
   }
 }
