@@ -71,7 +71,7 @@ export default {
   onSubmit(input) {
     console.log(tag, 'onSubmit()', input)
     this.search(input)
-    ResultView.show()
+    // ResultView.show() // -> No more need because of upper code call ResultView.render method.
   },
 
   onResetForm() {
@@ -86,6 +86,8 @@ export default {
     console.log(tag, 'search()', query)
     // FormView.inputEl.value = keyword
     FormView.setValue(query)
+
+    HistoryModel.add(query)
 
     // search api
     // 1) no value
