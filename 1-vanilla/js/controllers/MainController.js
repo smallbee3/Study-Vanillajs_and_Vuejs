@@ -2,9 +2,11 @@ import FormView from '../views/FormView.js'
 import ResultView from '../views/ResultView.js'
 import TabView from '../views/TabView.js'
 import KeywordView from '../views/KeywordView.js'
+import HistoryView from '../views/HistoryView.js'
 
 import SearchModel from '../models/SearchModel.js'
 import KeywordModel from '../models/KeywordModel.js'
+import HistoryModel from '../models/HistoryModel.js'
 
 const tag = '[MainController]'
 
@@ -21,9 +23,12 @@ export default {
     KeywordView.setup(document.querySelector('#search-keyword'))
       .on('@click', e => this.onClickKeyword(e.detail.keyword))
 
+    HistoryView.setup(document.querySelector('#search-history'))
+      .on('@click', e => this.onClickHistory(e.detail.keyword))
+
     ResultView.setup(document.querySelector('#search-result'))
 
-    this.selectedTab = '추천 검색어'
+    this.selectedTab = '최근 검색어'
     this.renderView()
   },
 
@@ -38,7 +43,7 @@ export default {
       // View를 rendering하는 곳이기 때문에 KeywordModel.js에서 data를 가져오는 코드를 아래 fetchSearchKeyword()로 분리
       this.fetchSearchKeyword()
     } else {
-      debugger
+      this.fetchSearchHistory()
     }
     ResultView.hide()
   },
@@ -46,6 +51,12 @@ export default {
   fetchSearchKeyword() {
     KeywordModel.list().then(data => {
       KeywordView.render(data)
+    })
+  },
+
+  fetchSearchHistory() {
+    HistoryModel.list().then(data => {
+      HistoryView.render(data)
     })
   },
 
@@ -60,16 +71,18 @@ export default {
 
     // ResultView.renderReset() // ResultView 3 - make 'renderReset' method in ResultView.js, which needs many code
     // ResultView.hide()
-    this.renderView()
+    this.renderView()   // 기존에 onResetForm이 단순히 ResultView를 가리는 역할만 수행. -> 초기에 있던 TabView와 KeywordView를 보여주는 부분까지 같이
   },
 
   search(query) {
     console.log(tag, 'search()', query)
+    // FormView.inputEl.value = keyword
+    FormView.setValue(query)
+
     // search api
     // 1) no value
     // this.onSearchresult([])
     // 2) data from SearchModel.js (dummy data)
-
     SearchModel.list(query).then(data => {
       this.onSearchResult(data)
     })
@@ -78,6 +91,7 @@ export default {
   onSearchResult(data) {
     TabView.hide()
     KeywordView.hide()
+    HistoryView.hide()
     ResultView.render(data)
   },
 
@@ -87,8 +101,9 @@ export default {
 
   onClickKeyword(keyword) {
     this.search(keyword)
+  },
 
-    // FormView.inputEl.value = keyword
-    FormView.setValue(keyword)
+  onClickHistory(keyword) {
+    this.search(keyword)
   }
 }
