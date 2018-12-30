@@ -57,7 +57,12 @@ export default {
 
   fetchSearchHistory() {
     HistoryModel.list().then(data => {
-      HistoryView.render(data)
+      // HistoryView.render(data)
+      HistoryView.render(data).bindRemoveBtn()
+                        // 왜 여기서 bindRemoveBtn을 호출을 하냐면 render 함수가 호출되면 data를 기반으로 DOM이 생성되고
+                        // 그리고 나서 이벤트를 바인딩 할 수 있기 때문에 체이닝을 이용함
+                        // -> 체이닝 하려면 render 함수가 this를 리턴해야되요.
+                        //    이 render는 HistoryView를 복사해온 KeywordView에 있어요.
     })
   },
 
