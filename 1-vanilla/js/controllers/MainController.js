@@ -29,7 +29,7 @@ export default {
 
     ResultView.setup(document.querySelector('#search-result'))
 
-    this.selectedTab = '최근 검색어'
+    this.selectedTab = '추천 검색어'
     this.renderView()
   },
 
@@ -43,8 +43,10 @@ export default {
       // })
       // View를 rendering하는 곳이기 때문에 KeywordModel.js에서 data를 가져오는 코드를 아래 fetchSearchKeyword()로 분리
       this.fetchSearchKeyword()
+      HistoryView.hide()
     } else {
       this.fetchSearchHistory()
+      KeywordView.hide()
     }
     ResultView.hide()
   },
@@ -102,7 +104,8 @@ export default {
   },
 
   onChangeTab(tabName) {
-    debugger
+    this.selectedTab = tabName
+    this.renderView()
   },
 
   onClickKeyword(keyword) {
