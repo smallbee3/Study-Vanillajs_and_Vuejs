@@ -7,6 +7,7 @@ new Vue({
     submitted: false,
     tabs: ['추천 검색어', '최근 검색어'],
     // selectedTab: '추천 검색어', // -> 이렇게 하면 코드가 중복이니까요. Vue 인스턴스가 생성될 때 tabs 배열의 0번 인덱스로 설정하면 될 것 같아요
+    selectedTab: '',
     searchResult: []
   },
   created() {
@@ -23,6 +24,9 @@ new Vue({
     },
     onReset(e) {
       this.resetForm()
+    },
+    onClickTab(tab) {
+      this.selectedTab = tab
     },
     search() {
       SearchModel.list().then(data => {
