@@ -31,7 +31,7 @@ TabView.bindClick = function () {
 }
 
 TabView.onClick = function (tabName) {
-  this.setActiveTab(tabName)
+  // this.setActiveTab(tabName) // -> 181231 Turned to comments for same code exists in renderView in MainController.js
   this.emit('@change', { tabName })
 }
 
