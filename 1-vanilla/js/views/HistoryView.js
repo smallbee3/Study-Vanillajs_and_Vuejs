@@ -6,12 +6,12 @@ const HistoryView = Object.create(KeywordView)
 
 HistoryView.messages.NO_KEYWORDS = '검색 이력이 없습니다'
 
-HistoryView.bindClickEvent = function () {
-  Array.from(this.el.querySelectorAll('li')).forEach(li => {
-    li.addEventListener('click', e => this.onClickKeyword(e))
-    // li.querySelector('button').addEventListener('click', e => this.onRemoveBtn(e))
-  })
-}
+// HistoryView.bindClickEvent = function () {
+//   Array.from(this.el.querySelectorAll('li')).forEach(li => {
+//     li.addEventListener('click', e => this.onClickKeyword(e))
+//     // li.querySelector('button').addEventListener('click', e => this.onRemoveBtn(e))
+//   })
+// }
 
 HistoryView.getKeywordsHtml = function (data) {
   return data.reduce((html, item) => {
