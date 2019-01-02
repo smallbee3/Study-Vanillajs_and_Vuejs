@@ -45,8 +45,7 @@
             <ul class="list">
               <li v-for="(item, index) in keywords"
                 v-on:click="onClickKeyword(item.keyword)">
-                <span class="number">{{index+1}}</span>
-                {{item.keyword}}
+                <span class="number">{{index+1}}</span> {{item.keyword}}
               </li>
             </ul>
           </div>
