@@ -38,6 +38,11 @@ new Vue({
       this.query = keyword
       this.search(this.query)
     },
+    onClickRemoveHistory(keyword) {
+      // e.stopPropagation()
+      HistoryModel.remove(keyword)
+      this.fetchHistory()
+    },
     fetchKeyword() {
       KeywordModel.list().then(data => {
         this.keywords = data
