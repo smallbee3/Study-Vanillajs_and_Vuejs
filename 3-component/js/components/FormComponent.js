@@ -9,7 +9,7 @@ export default {
   },
   methods: {
     onSubmit() {
-
+      this.$emit('@submit', this.inputValue.trim())
     },
     onKeyup() {
 
