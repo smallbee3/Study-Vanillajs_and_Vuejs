@@ -35,10 +35,14 @@
           </ul>
 
           <div v-if="selectedTab === tabs[0]">
-            <list type="keywords" v-bind:data="keywords"></list>
+            <list type="keywords"
+                  v-bind:data="keywords"
+                  v-on:@click="onClickKeyword"></list>
           </div>
           <div v-else>
-            <list type="history" v-bind:data="history"></list>
+            <list type="history"
+                  v-bind:data="history"
+                  v-on:@remove="onClickRemoveHistory"></list>
           </div>
         </div>
       </div>

@@ -3,10 +3,10 @@ export default {
   props: ['data', 'type'],
   methods: {
     onClickList(keyword) {
-
+      this.$emit('@click', keyword)
     },
-    onRemoveList(keyword) {
-
+    onClickRemoveList(keyword) {
+      this.$emit('@remove', keyword)
     }
   }
 }
