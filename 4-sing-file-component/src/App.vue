@@ -7,6 +7,13 @@
       <search-form v-bind:value="query"
         v-on:@submit="onSubmit"
         v-on:@reset="onReset"></search-form>
+
+        <div class="content">
+          <div v-if="submitted">
+            <search-result v-bind:data="searchResult"
+              v-bind:query="query"></search-result>
+          </div>
+        </div>
     </div>
   </div>
 </template>
@@ -17,6 +24,7 @@ import KeywordModel from './models/KeywordModel.js'
 import HistoryModel from './models/HistoryModel.js'
 
 import FormComponent from './components/FormComponent.vue'
+import ResultComponent from './components/ResultComponent.vue'
 
 export default {
   name: 'app',
@@ -32,7 +40,8 @@ export default {
     }
   },
   components: {
-    'search-form': FormComponent
+    'search-form': FormComponent,
+    'search-result': ResultComponent,
   },
   methods: {
     onSubmit(query) {
