@@ -1,12 +1,12 @@
 export default {
   template: '#list',
-  props: ['data'],
+  props: ['data', 'type'],
   methods: {
     onClickList(keyword) {
 
     },
     onRemoveList(keyword) {
-      
+
     }
   }
 }

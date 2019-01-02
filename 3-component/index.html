@@ -35,10 +35,10 @@
           </ul>
 
           <div v-if="selectedTab === tabs[0]">
-            <list v-bind:data="keywords"></list>
+            <list type="keywords" v-bind:data="keywords"></list>
           </div>
           <div v-else>
-            <list v-bind:data="history"></list>
+            <list type="history" v-bind:data="history"></list>
           </div>
         </div>
       </div>
@@ -74,10 +74,10 @@
     <ul class="list">
       <li v-for="(item, index) in data"
           v-on:click="onClickList(item.keyword)">
-        <span class="number">{{index + 1}}</span>
+        <span v-if="type === 'keywords'" class="number">{{index + 1}}</span>
         {{item.keyword}}
-        <span class="date">{{item.date}}</span>
-        <button class="btn-remove"
+        <span v-if="type === 'history'" class="date">{{item.date}}</span>
+        <button v-if="type === 'history'" class="btn-remove"
           v-on:click.stop="onClickRemoveList(item.keyword)"></button>
       </li>
     </ul>
