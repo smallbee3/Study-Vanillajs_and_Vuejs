@@ -40,6 +40,7 @@
           <div v-else>
             <list type="history"
                   v-bind:data="history"
+                  v-on:@click="onClickKeyword"
                   v-on:@remove="onClickRemoveHistory"></list>
           </div>
         </div>

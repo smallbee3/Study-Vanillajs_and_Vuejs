@@ -23,6 +23,7 @@
             <div v-else>
               <list type="history"
                     v-bind:data="history"
+                    v-on:@click="onClickKeyword"
                     v-on:@remove="onClickRemoveHistory"></list>
             </div>
           </div>
@@ -56,7 +57,7 @@ export default {
   components: {
     'search-form': FormComponent,
     'search-result': ResultComponent,
-    'list': ListComponent,
+    'list': ListComponent
   },
   created() {
     this.selectedTab = this.tabs[0]

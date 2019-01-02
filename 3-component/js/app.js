@@ -44,7 +44,7 @@ new Vue({
       this.selectedTab = tab
     },
     onClickKeyword(keyword) {
-      this.query = keyword;
+      this.query = keyword
       this.search()
     },
     onClickRemoveHistory(keyword) {
