@@ -7,6 +7,11 @@ export default {
       inputValue: this.value
     }
   },
+  watch: {
+    value(newVal, oldVal) {
+      this.inputValue = newVal
+    }
+  },
   methods: {
     onSubmit() {
       this.$emit('@submit', this.inputValue.trim())
