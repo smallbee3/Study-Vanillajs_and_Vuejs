@@ -13,6 +13,19 @@
             <search-result v-bind:data="searchResult"
               v-bind:query="query"></search-result>
           </div>
+          <div v-else>
+
+            <div v-if="selectedTab === tabs[0]">
+              <list type="keywords"
+                    v-bind:data="keywords"
+                    v-on:@click="onClickKeyword"></list>
+            </div>
+            <div v-else>
+              <list type="history"
+                    v-bind:data="history"
+                    v-on:@remove="onClickRemoveHistory"></list>
+            </div>
+          </div>
         </div>
     </div>
   </div>
@@ -25,6 +38,7 @@ import HistoryModel from './models/HistoryModel.js'
 
 import FormComponent from './components/FormComponent.vue'
 import ResultComponent from './components/ResultComponent.vue'
+import ListComponent from './components/ListComponent.vue'
 
 export default {
   name: 'app',
@@ -42,6 +56,12 @@ export default {
   components: {
     'search-form': FormComponent,
     'search-result': ResultComponent,
+    'list': ListComponent,
+  },
+  created() {
+    this.selectedTab = this.tabs[0]
+    this.fetchKeyword()
+    this.fetchHistory()
   },
   methods: {
     onSubmit(query) {
