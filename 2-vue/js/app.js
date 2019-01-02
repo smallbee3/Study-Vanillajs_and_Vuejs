@@ -31,6 +31,9 @@ new Vue({
     onClickTab(tab) {
       this.selectedTab = tab
     },
+    onClickKeyword(keyword) {
+      this.search()
+    },
     fetchKeyword() {
       KeywordModel.list().then(data => {
         this.keywords = data
