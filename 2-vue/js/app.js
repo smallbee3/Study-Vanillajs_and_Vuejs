@@ -32,6 +32,7 @@ new Vue({
       this.selectedTab = tab
     },
     onClickKeyword(keyword) {
+      this.query = keyword
       this.search()
     },
     fetchKeyword() {
