@@ -23,7 +23,7 @@ new Vue({
     onSubmit(e) {
       // e.preventDefault() // -> vanilla.js 방식
       // index.html에서 v-on:submit.prevent="onSubmit" -> vue.js 방식
-      this.search(this.query)
+      this.search()
     },
     onKeyup(e) {
       if (!this.query.length) this.resetForm()
@@ -36,7 +36,7 @@ new Vue({
     },
     onClickKeyword(keyword) {
       this.query = keyword
-      this.search(this.query)
+      this.search()
     },
     onClickRemoveHistory(keyword) {
       // e.stopPropagation()
@@ -53,12 +53,14 @@ new Vue({
         this.history = data
       })
     },
-    search(query) {
-      console.log(`Searching "${query}"...`)
+    search() {
+      console.log(`Searching "${this.query}"...`)
       SearchModel.list().then(data => {
         this.submitted = true
         this.searchResult = data
       })
+      HistoryModel.add(this.query)
+      this.fetchHistory()
     },
     resetForm() {
       this.query = ''
