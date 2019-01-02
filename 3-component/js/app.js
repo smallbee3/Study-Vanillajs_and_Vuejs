@@ -28,9 +28,9 @@ new Vue({
       this.query = query
       this.search()
     },
-    onKeyup(e) {
-      if (!this.query.length) this.resetForm()
-    },
+    // onKeyup(e) {
+    //   if (!this.query.length) this.resetForm()
+    // },
     onReset(e) {
       this.resetForm()
     },
